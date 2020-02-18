@@ -69,3 +69,14 @@ def stop_words_remover(df):
         lower_split_tweets.append([__.lower() for __ in _])
     df.insert(loc=2, column="Without Stop Words", value=lower_split_tweets)
     return df
+
+
+def date_parser(dates):
+    """
+        Takes as input a list of these datetime strings and returns only the date in 'yyyy-mm-dd' format.
+        Args:
+            dates (array): list or array-like object containing datetime strings.
+        Returns:
+            list: list of strings where each element in the returned list contains only the date in the 'yyyy-mm-dd' format.
+    """
+    return [date.split()[0] for date in dates]

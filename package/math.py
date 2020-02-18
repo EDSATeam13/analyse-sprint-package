@@ -23,3 +23,21 @@ def dictionary_of_metrics(items):
         'min': round(np.min(items), 2),
         'max': round(np.max(items), 2)
     }
+
+
+def five_num_summary(items):
+    """
+        Calculates the maximum, median, minimum and quartiles of a list of items.
+        Args:
+            items (array): list or array-like object containing numerical values.
+        Returns:
+            dict: dictionary containing the five number summary of the given list of items.
+    """
+    return {
+        'max': round(np.max(items), 2),
+        'median': round(np.median(items), 2),
+        'min': round(np.min(items), 2),
+        'q1': round(np.quantile(items, 0.25), 2),
+        'q3': round(np.quantile(items, 0.75), 2)
+    }
+

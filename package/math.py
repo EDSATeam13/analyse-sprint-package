@@ -41,3 +41,31 @@ def five_num_summary(items):
         'q3': round(np.quantile(items, 0.75), 2)
     }
 
+
+def stop_words_remover(df):
+    """
+        Remove english stop words from a tweet.
+        Args:
+            df (pandas dataframe): A pandas dataframe.
+        Returns:
+            df: Returns a modified dataframe with all stop words removed, placed in a new column called 'Without Stop Words'.
+    """
+    if type(df) != type(pd.DataFrame()):
+        return df
+    split_tweets = []
+    clean_tweets = []
+    lower_split_tweets = []
+    for _ in df[["Tweets"]]:
+        tweets = df[_]
+    for tweet in tweets:
+        split_tweets.append(tweet.split())
+    for tweet in split_tweets:
+        for value in stop_words_dict["stopwords"]:
+            for word in tweet:
+                if word.lower() == value:
+                    tweet.remove(word)
+        clean_tweets.append(tweet)
+    for _ in clean_tweets:
+        lower_split_tweets.append([__.lower() for __ in _])
+    df.insert(loc=2, column="Without Stop Words", value=lower_split_tweets)
+    return df

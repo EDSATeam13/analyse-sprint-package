@@ -8,7 +8,7 @@ setup(
     description='',
     long_description=open('README.md').read(),
     install_requires=['numpy', 'pandas'],
-    url='https://github.com/EDSATeam13/analyse-sprint-package.git',
+    url='https://github.com/EDSATeam13/analyse_sprint_package.git',
     author='Tsundukani Makhubela, Pono Pitsoe, Silindokuhle Kubheka, Oarabile Tsele, Mixo Shitlhangu',
     author_email='<tsundukani@icloud.com>'
 )

@@ -80,3 +80,15 @@ def date_parser(dates):
             list: list of strings where each element in the returned list contains only the date in the 'yyyy-mm-dd' format.
     """
     return [date.split()[0] for date in dates]
+
+
+def number_of_tweets_per_day(df):
+    """
+        Calculates the number of tweets that were posted per day.
+        Args:
+            df (pandas dataframe): A pandas dataframe.
+        Returns:
+            df: Returns a new dataframe, grouped by day, with the number of tweets for that day.
+    """
+    df['Date']=df['Date'].str.split(expand=True)[0]
+    return df.groupby('Date').count()

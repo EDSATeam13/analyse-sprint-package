@@ -92,3 +92,59 @@ def number_of_tweets_per_day(df):
     """
     df['Date']=df['Date'].str.split(expand=True)[0]
     return df.groupby('Date').count()
+
+
+def word_splitter(df):
+    """
+        Split the sentences in a dataframe's column into a list of the separate words.
+        Args:
+            df (pandas dataframe): A pandas dataframe.
+        Returns:
+            df: returns a modified dataframe with new a column; 'Split Tweets', containing sentences in 'Tweets' which have been split.
+    """
+    lowercase_tweets = df['Tweets'].str.lower()
+    df['Split Tweets'] = lowercase_tweets.str.split()
+    return df
+
+
+def extract_municipality_hashtags(df):
+    """
+        Extracts the municipality from a tweet using the mun_dict dictonary and, and inserts the result into a new column named
+        'municipality' in the same dataframe. And extracts a list of hashtags from a tweet into a new column named 'hashtags' in
+        the same dataframe.
+        Args:
+            df (pandas dataframe): A pandas dataframe.
+        Returns:
+            df: The input dataframe with additional columns.
+    """
+    for _ in df[["Tweets"]]:
+        tweets = df[_]
+    municipalities = []
+    for _ in tweets:
+        found = False
+        tweet = _.split()
+        for word in tweet:
+            for key, value in mun_dict.items():
+                if word == key:
+                    municipalities.append(value)
+                    found = True
+                    break
+            if found:
+                break
+        if not found:
+            municipalities.append(np.nan)
+    hashtags = []
+    for _ in tweets:
+        tweet = _.split()
+        tags = []
+        for word in tweet:
+            if '#' in word:
+                tags.append(word.lower())
+        if len(tags) == 0:
+            hashtags.append(np.nan)
+        else:
+            hashtags.append(tags)
+    df.insert(loc=2, column="municipality", value=municipalities)
+    df.insert(loc=3, column="hashtags", value=hashtags)
+    return df
+

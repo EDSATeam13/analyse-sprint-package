@@ -2,6 +2,17 @@ import numpy as np
 import pandas as pd
 
 
+mun_dict = {
+    '@CityofCTAlerts' : 'Cape Town',
+    '@CityPowerJhb' : 'Johannesburg',
+    '@eThekwiniM' : 'eThekwini' ,
+    '@EMMInfo' : 'Ekurhuleni',
+    '@centlecutility' : 'Mangaung',
+    '@NMBmunicipality' : 'Nelson Mandela Bay',
+    '@CityTshwane' : 'Tshwane'
+}
+
+
 def dictionary_of_metrics(items):
     """
         Calculates the mean, median, variance, standard deviation, minimum and maximum of a list of items.

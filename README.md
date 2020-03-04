@@ -15,8 +15,8 @@ The purpose of the package is:
 
 ## Installing this package from GitHub
 
-`pip install git+https://github.com/EDSATeam13/analyse-sprint-package.git`
+`pip install git+https://github.com/EDSATeam13/analyse_sprint_package.git`
 
 ## Updating this package from GitHub
 
-`pip install --upgrade git+https://github.com/EDSATeam13/analyse-sprint-package.git`
+`pip install --upgrade git+https://github.com/EDSATeam13/analyse_sprint_package.git`
